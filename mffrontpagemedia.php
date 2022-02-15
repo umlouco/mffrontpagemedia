@@ -89,6 +89,19 @@ function mf_google_options_init(){
     add_settings_field('mf_topheader', 'Top Header', 'mf_input_top_header', 'mf-google-settings', 'mf_google_options'); 
     add_settings_field('mf_afterbody', 'After Body', 'mf_input_after_body', 'mf-google-settings', 'mf_google_options');
     add_settings_field('mf_tag_laguage', 'Google Tag laguage', 'mf_input_tag_language', 'mf-google-settings', 'mf_google_options');
+    add_settings_field('mf_head_scripts', 'Javascript in header', 'mf_input_head_scripts', 'mf-google-settings', 'mf_google_options'); 
+    add_settings_field('mf_footer_scripts', 'Javascript in footer', 'mf_input_footer_scripts', 'mf-google-settings', 'mf_google_options'); 
+}
+
+function mf_input_footer_scripts(){
+    $google = get_option('mf_google_options'); 
+    $jsfooter = $google['jsfooter'];
+    echo '<textarea id="jsfooter" name="mf_google_options[jsfooter]" rows="20" cols="100">'.$jsfooter.'</textarea>';
+}
+function mf_input_head_scripts(){
+    $google = get_option('mf_google_options'); 
+    $jsheader = $google['jsheader'];
+    echo '<textarea id="jsheader" name="mf_google_options[jsheader]" rows="20" cols="100">'.$jsheader.'</textarea>';
 }
 function mf_input_tag_language(){
     $google = get_option('mf_google_options'); 
@@ -104,7 +117,7 @@ function mf_input_top_header(){
 function mf_input_after_body(){
     $google = get_option('mf_google_options'); 
     $afterbody = $google['afterbody']; 
-    echo '<textarea id="topheader" name="mf_google_options[afterbody]" rows="10" cols="100">'.$afterbody. '</textarea>';
+    echo '<textarea id="afterbody" name="mf_google_options[afterbody]" rows="10" cols="100">'.$afterbody. '</textarea>';
 }
 
 add_action('admin_init', 'mf_frontpage_admin_init');
